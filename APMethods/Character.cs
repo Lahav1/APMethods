@@ -22,5 +22,37 @@ namespace APMethods
         {
             board.DrawCell(this.xPos, this.yPos, this.symbol);
         }
+
+        public void MoveUp(Board board)
+        {
+            if (this.yPos > 1)
+            {
+                this.yPos = this.yPos - 1;
+            }
+        }
+
+        public void MoveDown(Board board)
+        {
+            if (this.yPos < board.Height)
+            {
+                this.yPos = this.yPos + 1;
+            }
+        }
+
+        public void MoveLeft(Board board)
+        {
+            if (this.xPos > 1)
+            {
+                this.xPos = this.xPos - 1;
+            }
+        }
+
+        public void MoveRight(Board board)
+        {
+            if (this.xPos < board.Width)
+            {
+                this.xPos = this.xPos + 1;
+            }
+        }
     }
 }

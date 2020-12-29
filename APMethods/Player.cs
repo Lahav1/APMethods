@@ -6,13 +6,11 @@ namespace APMethods
 {
     class Player : Character
     {
-        int score;
-        int level;
+        public int Score { get; set; }
 
         public Player(int x, int y) : base(x, y)
         {
-            this.score = 0;
-            this.level = 1;
+            this.Score = 0;
             this.symbol = 'P';
         }
     }

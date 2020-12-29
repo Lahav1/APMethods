@@ -9,13 +9,13 @@ namespace APMethods
     {
         char[,] grid;
         List<Drawable> elements;
-        int width;
-        int height;
+        public int Width { get; }
+        public int Height { get; }
 
         public Board(int width, int height)
         {
-            this.width = width;
-            this.height = height;
+            this.Width = width;
+            this.Height = height;
             this.grid = this.InitGrid(width, height);
             this.elements = new List<Drawable>();
         }
@@ -63,7 +63,8 @@ namespace APMethods
 
         public void Draw()
         {
-            this.grid = this.InitGrid(this.width, this.height);
+            Console.SetCursorPosition(0, 0);
+            this.grid = this.InitGrid(this.Width, this.Height);
             foreach (var element in this.elements)
             {
                 element.DrawOn(this);
