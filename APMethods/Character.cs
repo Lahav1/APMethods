@@ -23,7 +23,7 @@ namespace APMethods
             board.DrawCell(this.xPos, this.yPos, this.symbol);
         }
 
-        public void MoveUp(Board board)
+        public virtual void MoveUp(Board board)
         {
             if (this.yPos > 1)
             {
@@ -31,7 +31,7 @@ namespace APMethods
             }
         }
 
-        public void MoveDown(Board board)
+        public virtual void MoveDown(Board board)
         {
             if (this.yPos < board.Height)
             {

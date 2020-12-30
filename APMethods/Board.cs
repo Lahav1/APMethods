@@ -63,7 +63,7 @@ namespace APMethods
 
         public void Draw()
         {
-            Console.SetCursorPosition(0, 0);
+            Console.SetCursorPosition(0, 1);
             this.grid = this.InitGrid(this.Width, this.Height);
             foreach (var element in this.elements)
             {

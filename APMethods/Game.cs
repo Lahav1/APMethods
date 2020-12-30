@@ -10,6 +10,8 @@ namespace APMethods
         Board board;
         List<Drawable> elements;
         Player player;
+        ScoreIndicator scoreIndicator;
+        HealthIndicator healthIndicator;
 
         public Game(Board board)
         {
@@ -27,6 +29,8 @@ namespace APMethods
             Drawable e3 = new Enemy(2, 3);
             this.board.AddElement(e3);
             this.elements.Add(e3);
+            this.scoreIndicator = new ScoreIndicator(10, 0, this.player);
+            this.healthIndicator = new HealthIndicator(30, 0, this.player);
         }
 
         public void HandleKeyPress(ConsoleKey key)
@@ -49,17 +53,24 @@ namespace APMethods
             }
         }
 
+        public void render()
+        {
+            this.board.Draw();
+            this.scoreIndicator.Display();
+            this.healthIndicator.Display();
+        }
+
         public void run()
         {
             Console.CursorVisible = false;
-            this.board.Draw();
+            this.render();
             ConsoleKey key = 0;
             do
             {
                 this.HandleKeyPress(key);
                 while (!Console.KeyAvailable)
                 {
-                    this.board.Draw();
+                    this.render();
                 }
             } while ((key = Console.ReadKey(true).Key) != ConsoleKey.Escape);
         }

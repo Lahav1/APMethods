@@ -4,14 +4,75 @@ using System.Text;
 
 namespace APMethods
 {
-    class Player : Character
+    class Player : Character, HealthObservable, ScoreObservable
     {
         public int Score { get; set; }
+        List<Observer> healthObservers;
+        List<Observer> scoreObservers;
 
         public Player(int x, int y) : base(x, y)
         {
             this.Score = 0;
             this.symbol = 'P';
+            this.healthObservers = new List<Observer>();
+            this.scoreObservers = new List<Observer>();
         }
+
+        public void SubscribeToHealth(Observer o)
+        {
+            this.healthObservers.Add(o);
+        }
+
+        public void UnsubscribeFromHealth(Observer o)
+        {
+            this.healthObservers.Remove(o);
+        }
+
+        public void NotifyHealth(int payload)
+        {
+            foreach (Observer o in this.healthObservers)
+            {
+                o.Update(payload);
+            }
+        }
+
+        public void SubscribeToScore(Observer o)
+        {
+            this.scoreObservers.Add(o);
+        }
+
+        public void UnsubscribeFromScore(Observer o)
+        {
+            this.scoreObservers.Remove(o);
+        }
+
+        public override void MoveUp(Board board)
+        {
+            if (this.yPos > 1)
+            {
+                this.yPos = this.yPos - 1;
+            }
+            this.Score += 10;
+            this.NotifyScore(this.Score);
+        }
+
+        public override void MoveDown(Board board)
+        {
+            if (this.yPos < board.Height)
+            {
+                this.yPos = this.yPos + 1;
+            }
+            this.health -= 10;
+            this.NotifyHealth(this.health);
+        }
+
+        public void NotifyScore(int payload)
+        {
+            foreach (Observer o in this.scoreObservers)
+            {
+                o.Update(payload);
+            }
+        }
+
     }
 }
