@@ -8,7 +8,7 @@ namespace APMethods
         {
             Board board = new Board(50, 20);
             Game game = new Game(board);
-            game.run();
+            game.Run();
         }
     }
 }

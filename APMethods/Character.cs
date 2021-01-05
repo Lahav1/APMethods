@@ -4,7 +4,7 @@ using System.Text;
 
 namespace APMethods
 {
-    class Character : Drawable
+    abstract class Character : Drawable
     {
         protected int xPos;
         protected int yPos;

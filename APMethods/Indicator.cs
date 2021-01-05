@@ -18,16 +18,6 @@ namespace APMethods
             this.yPos = y;
             this.title = title;
         }
-        
-        public void Increase(int increment)
-        {
-            this.value += increment;
-        }
-
-        public void Decrease(int decrement)
-        {
-            this.value -= decrement;
-        }
 
         public void Display()
         {

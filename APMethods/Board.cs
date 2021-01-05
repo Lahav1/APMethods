@@ -51,21 +51,16 @@ namespace APMethods
             return g;
         }
 
-        public void AddElement(Drawable d)
-        {
-            this.elements.Add(d);
-        }
-
         public void DrawCell(int x, int y, char symbol)
         {
             this.grid[y, x] = symbol;
         }
 
-        public void Draw()
+        public void Draw(List<Drawable> elements)
         {
             Console.SetCursorPosition(0, 1);
             this.grid = this.InitGrid(this.Width, this.Height);
-            foreach (var element in this.elements)
+            foreach (var element in elements)
             {
                 element.DrawOn(this);
             }

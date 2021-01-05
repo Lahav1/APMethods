@@ -4,9 +4,10 @@ using System.Text;
 
 namespace APMethods
 {
-    class Enemy : Character
+    class Enemy : Character, Attacker
     {
         int speed;
+        ChasingStrategy strategy;
 
         public Enemy(int x, int y) : base(x, y)
         {
@@ -17,6 +18,21 @@ namespace APMethods
         public void SetSpeed(int newSpeed)
         {
             this.speed = newSpeed;
+        }
+
+        public void Attack()
+        {
+            Console.WriteLine("Attacking player with basic attack.");
+        }
+
+        public void SetChasingStrategy(ChasingStrategy strategy)
+        {
+            this.strategy = strategy;
+        }
+
+        public void Move()
+        {
+            this.strategy.ChasingAlgorithm();
         }
     }
 }
