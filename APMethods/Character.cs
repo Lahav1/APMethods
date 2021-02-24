@@ -54,5 +54,15 @@ namespace APMethods
                 this.xPos = this.xPos + 1;
             }
         }
+
+        public int GetX()
+        {
+            return this.xPos;
+        }
+        
+        public int GetY()
+        {
+            return this.yPos;
+        }
     }
 }

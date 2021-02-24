@@ -28,14 +28,6 @@ namespace APMethods
             this.healthObservers.Remove(o);
         }
 
-        public void NotifyHealth(int payload)
-        {
-            foreach (Observer o in this.healthObservers)
-            {
-                o.Update(payload);
-            }
-        }
-
         public void SubscribeToScore(Observer o)
         {
             this.scoreObservers.Add(o);
@@ -52,8 +44,6 @@ namespace APMethods
             {
                 this.yPos = this.yPos - 1;
             }
-            this.Score += 10;
-            this.NotifyScore(this.Score);
         }
 
         public override void MoveDown(Board board)
@@ -62,8 +52,26 @@ namespace APMethods
             {
                 this.yPos = this.yPos + 1;
             }
-            this.health -= 10;
+        }
+
+        public void IncreaseScore(int points)
+        {
+            this.Score += points;
+            this.NotifyScore(this.Score);
+        }
+
+        public void DecreaseHealth(int healthPoints)
+        {
+            this.health -= healthPoints;
             this.NotifyHealth(this.health);
+        }
+
+        public void NotifyHealth(int payload)
+        {
+            foreach (Observer o in this.healthObservers)
+            {
+                o.Update(payload);
+            }
         }
 
         public void NotifyScore(int payload)
@@ -74,5 +82,11 @@ namespace APMethods
             }
         }
 
+        public void CheckHit(Enemy enemy)
+        {
+            if (this.xPos == enemy.GetX() && this.yPos == enemy.GetY()) {
+                this.DecreaseHealth(10);
+            }
+        }
     }
 }

@@ -69,13 +69,19 @@ namespace APMethods
             Console.CursorVisible = false;
             this.Render();
             ConsoleKey key = 0;
+            int iteration = 0;
             do
             {
                 this.HandleKeyPress(key);
                 while (!Console.KeyAvailable)
                 {
+                    if (iteration++ % 30 == 0)
+                    {
+                        this.player.IncreaseScore(1);
+                    } 
                     foreach (Enemy enemy in this.enemies)
                     {
+                        this.player.CheckHit(enemy);
                         enemy.Move(this.board);
                     }
                     this.Render();
