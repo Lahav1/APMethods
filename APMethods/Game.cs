@@ -22,12 +22,15 @@ namespace APMethods
             this.enemies = new List<Enemy>();
             this.elements.Add(this.player);
             Enemy e1 = new Enemy(9, 14);
+            e1.SetChasingStrategy(new BasicChaser());
             this.elements.Add(e1);
             this.enemies.Add(e1);
             Enemy e2 = new Enemy(5, 7);
+            e2.SetChasingStrategy(new BasicChaser());
             this.elements.Add(e2);
             this.enemies.Add(e2);
             Enemy e3 = new Enemy(2, 3);
+            e3.SetChasingStrategy(new AdvancedChaser());
             this.elements.Add(e3);
             this.enemies.Add(e3);
             this.scoreIndicator = new ScoreIndicator(10, 0, this.player);
@@ -71,7 +74,10 @@ namespace APMethods
                 this.HandleKeyPress(key);
                 while (!Console.KeyAvailable)
                 {
-                    // [todo: move all enemies].
+                    foreach (Enemy enemy in this.enemies)
+                    {
+                        enemy.Move(this.board);
+                    }
                     this.Render();
                 }
             } while ((key = Console.ReadKey(true).Key) != ConsoleKey.Escape);

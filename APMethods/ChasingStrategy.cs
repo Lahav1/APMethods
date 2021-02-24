@@ -6,6 +6,6 @@ namespace APMethods
 {
     interface ChasingStrategy
     {
-        public void ChasingAlgorithm();
+        public void ChasingAlgorithm(Enemy enemy, Board board);
     }
 }
