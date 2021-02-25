@@ -11,6 +11,7 @@ namespace APMethods
         List<Drawable> elements;
         Player player;
         List<Enemy> enemies;
+        List<Attacker> attackers;
         ScoreIndicator scoreIndicator;
         HealthIndicator healthIndicator;
 
@@ -18,21 +19,34 @@ namespace APMethods
         {
             this.board = board;
             this.elements = new List<Drawable>();
-            this.player = new Player(8, 19);
             this.enemies = new List<Enemy>();
+            this.attackers = new List<Attacker>();
+
+            this.player = new Player(8, 19);
             this.elements.Add(this.player);
+
             Enemy e1 = new Enemy(9, 14);
             e1.SetChasingStrategy(new BasicChaser());
             this.elements.Add(e1);
             this.enemies.Add(e1);
+            Attacker a1 = new FlamingAttacker(e1);
+            this.attackers.Add(a1);
+
             Enemy e2 = new Enemy(5, 7);
             e2.SetChasingStrategy(new BasicChaser());
             this.elements.Add(e2);
             this.enemies.Add(e2);
+            Attacker a2 = new FreezingAttacker(e2);
+            this.attackers.Add(a2);
+
+
             Enemy e3 = new Enemy(2, 3);
             e3.SetChasingStrategy(new AdvancedChaser());
             this.elements.Add(e3);
             this.enemies.Add(e3);
+            Attacker a3 = new FlamingAttacker(new FreezingAttacker(e3));
+            this.attackers.Add(a3);
+
             this.scoreIndicator = new ScoreIndicator(10, 0, this.player);
             this.healthIndicator = new HealthIndicator(30, 0, this.player);
         }
@@ -78,11 +92,15 @@ namespace APMethods
                     if (iteration++ % 30 == 0)
                     {
                         this.player.IncreaseScore(1);
-                    } 
-                    foreach (Enemy enemy in this.enemies)
+                    }
+                    for (int i = 0; i < this.enemies.Count; i++)
                     {
-                        this.player.CheckHit(enemy);
-                        enemy.Move(this.board);
+                        this.enemies[i].Move(this.board);
+                        bool isHit = this.player.CheckHit(this.enemies[i]);
+                        if (isHit)
+                        {
+                            this.attackers[i].Attack();
+                        }
                     }
                     this.Render();
                 }

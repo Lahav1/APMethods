@@ -13,9 +13,8 @@ namespace APMethods
 
         public new void Attack()
         {
-            this.decoratedAttacker.Attack();
-            // decrease 15 hp
             Console.WriteLine("Attacking player with ice.");
+            this.decoratedAttacker.Attack();
         }
     }
 }
