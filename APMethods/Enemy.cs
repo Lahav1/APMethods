@@ -9,7 +9,7 @@ namespace APMethods
         int speed;
         ChasingStrategy strategy;
 
-        public Enemy(int x, int y, Player player) : base(x, y)
+        public Enemy(int x, int y, Player player, List<Obstacle> obstacles) : base(x, y, obstacles)
         {
             this.speed = 1;
             this.symbol = 'E';

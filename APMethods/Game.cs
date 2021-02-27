@@ -1,4 +1,5 @@
-﻿using System;
+﻿using APMethods.Levels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
@@ -12,6 +13,7 @@ namespace APMethods
         Player player;
         List<Enemy> enemies;
         List<Attacker> attackers;
+        List<Obstacle> obstacles;
         ScoreIndicator scoreIndicator;
         HealthIndicator healthIndicator;
 
@@ -22,24 +24,28 @@ namespace APMethods
             this.enemies = new List<Enemy>();
             this.attackers = new List<Attacker>();
 
-            this.player = new Player(8, 19);
+            Level lvl = new EasyLevel(this.board);
+            this.obstacles = lvl.GetObstacles();
+            this.elements.AddRange(this.obstacles);
+            
+            this.player = new Player(8, 19, this.obstacles);
             this.elements.Add(this.player);
 
-            Enemy e1 = new Enemy(9, 14, this.player);
+            Enemy e1 = new Enemy(9, 14, this.player, this.obstacles);
             e1.SetChasingStrategy(new BasicChaser());
             this.elements.Add(e1);
             this.enemies.Add(e1);
             Attacker a1 = new FlamingAttacker(e1);
             this.attackers.Add(a1);
 
-            Enemy e2 = new Enemy(5, 7, this.player);
+            Enemy e2 = new Enemy(5, 7, this.player, this.obstacles);
             e2.SetChasingStrategy(new BasicChaser());
             this.elements.Add(e2);
             this.enemies.Add(e2);
             Attacker a2 = new FreezingAttacker(e2);
             this.attackers.Add(a2);
 
-            Enemy e3 = new Enemy(2, 3, this.player);
+            Enemy e3 = new Enemy(2, 3, this.player, this.obstacles);
             e3.SetChasingStrategy(new BasicChaser());
             this.elements.Add(e3);
             this.enemies.Add(e3);
@@ -118,7 +124,11 @@ namespace APMethods
                 // game over message
                 if (this.player.GetHealth() == 0)
                 {
-                    Screens.EndScreen(this.board.Width / 2, this.board.Height / 2, 10);
+                    Console.SetCursorPosition(0, 0);
+                    Console.Write(new String(' ', 100));
+                    Console.SetCursorPosition(0, this.board.Height + 4);
+                    Console.Write(new String(' ', 100));
+                    Screens.EndScreen(this.board.Width / 2, this.board.Height / 2, this.player.Score);
                 }
             } while ((key = Console.ReadKey(true).Key) != ConsoleKey.Escape);
         }

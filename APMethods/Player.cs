@@ -10,7 +10,7 @@ namespace APMethods
         List<Observer> healthObservers;
         List<Observer> scoreObservers;
 
-        public Player(int x, int y) : base(x, y)
+        public Player(int x, int y, List<Obstacle> obstacles) : base(x, y, obstacles)
         {
             this.Score = 0;
             this.symbol = 'P';
