@@ -86,7 +86,7 @@ namespace APMethods
             do
             {
                 this.HandleKeyPress(key);
-                while (!Console.KeyAvailable)
+                while (!Console.KeyAvailable && this.player.GetHealth() != 0)
                 {
                     if (iteration++ % 30 == 0)
                     {
@@ -105,6 +105,14 @@ namespace APMethods
                         }
                     }
                     this.Render();
+                }
+                // game over message
+                if (this.player.GetHealth() == 0)
+                {
+                    Console.SetCursorPosition(0, this.board.Height + 4);
+                    Console.Write(new String(' ', 100));
+                    Console.SetCursorPosition(0, this.board.Height + 4);
+                    Console.WriteLine("Game Over!");
                 }
             } while ((key = Console.ReadKey(true).Key) != ConsoleKey.Escape);
         }

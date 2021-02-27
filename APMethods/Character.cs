@@ -64,5 +64,10 @@ namespace APMethods
         {
             return this.yPos;
         }
+
+        public int GetHealth()
+        {
+            return this.health;
+        }
     }
 }

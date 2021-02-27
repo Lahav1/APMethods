@@ -63,6 +63,10 @@ namespace APMethods
         public void DecreaseHealth(int healthPoints)
         {
             this.health -= healthPoints;
+            if (this.health < 0)
+            {
+                this.health = 0;
+            }
             this.NotifyHealth(this.health);
         }
 
