@@ -12,7 +12,7 @@ namespace APMethods
         public int Width { get; }
         public int Height { get; }
 
-        public Board(int width, int height)
+        public Board(int height, int width)
         {
             this.Width = width;
             this.Height = height;

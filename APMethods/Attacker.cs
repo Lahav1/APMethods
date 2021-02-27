@@ -6,6 +6,6 @@ namespace APMethods
 {
     interface Attacker
     {
-        void Attack();
+        void Attack(int xPos, int yPos);
     }
 }

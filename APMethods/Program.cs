@@ -6,7 +6,7 @@ namespace APMethods
     {
         static void Main(string[] args)
         {
-            Board board = new Board(50, 20);
+            Board board = new Board(20, 50);
             Game game = new Game(board);
             game.Run();
         }

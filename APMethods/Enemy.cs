@@ -4,15 +4,16 @@ using System.Text;
 
 namespace APMethods
 {
-    class Enemy : Character, Attacker
+    class Enemy : Character, Attacker, Observer
     {
         int speed;
         ChasingStrategy strategy;
 
-        public Enemy(int x, int y) : base(x, y)
+        public Enemy(int x, int y, Player player) : base(x, y)
         {
             this.speed = 1;
             this.symbol = 'E';
+            player.SubscribeToScore(this);
         }
 
         public void SetSpeed(int newSpeed)
@@ -20,9 +21,10 @@ namespace APMethods
             this.speed = newSpeed;
         }
 
-        public void Attack()
+        public void Attack(int xPos, int yPos)
         {
-            Console.WriteLine("Attacking player with basic attack.");
+            Console.SetCursorPosition(xPos, yPos);
+            Console.Write("\n");
         }
 
         public void SetChasingStrategy(ChasingStrategy strategy)
@@ -33,6 +35,14 @@ namespace APMethods
         public void Move(Board board)
         {
             this.strategy.ChasingAlgorithm(this, board);
+        }
+
+        public void Update(int payload)
+        {
+            if (payload == 10)
+            {
+                this.SetChasingStrategy(new AdvancedChaser());
+            }
         }
     }
 }
