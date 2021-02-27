@@ -33,9 +33,9 @@ namespace APMethods
             this.strategy = strategy;
         }
 
-        public void Move(Board board)
+        public void Move(Board board, Player player)
         {
-            this.strategy.ChasingAlgorithm(this, board);
+            this.strategy.ChasingAlgorithm(this, board, player);
         }
 
         public void Update(int payload)

@@ -106,7 +106,7 @@ namespace APMethods
                     }
                     for (int i = 0; i < this.enemies.Count; i++)
                     {
-                        this.enemies[i].Move(this.board);
+                        this.enemies[i].Move(this.board, this.player);
                         bool isHit = this.player.CheckHit(this.enemies[i]);
                         if (isHit)
                         {
