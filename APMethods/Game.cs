@@ -83,14 +83,20 @@ namespace APMethods
             this.Render();
             ConsoleKey key = 0;
             int iteration = 0;
+            int timeSineLastHit = 0;
             do
             {
                 this.HandleKeyPress(key);
                 while (!Console.KeyAvailable && this.player.GetHealth() != 0)
                 {
-                    if (iteration++ % 30 == 0)
+                    if (iteration % 30 == 0)
                     {
                         this.player.IncreaseScore(1);
+                    }
+                    if(timeSineLastHit % 120 == 0)
+                    {
+                        Console.SetCursorPosition(0, this.board.Height + 4);
+                        Console.Write(new String(' ', 100));
                     }
                     for (int i = 0; i < this.enemies.Count; i++)
                     {
@@ -98,21 +104,21 @@ namespace APMethods
                         bool isHit = this.player.CheckHit(this.enemies[i]);
                         if (isHit)
                         {
+                            timeSineLastHit = 0;
                             Console.SetCursorPosition(0, this.board.Height + 4);
                             Console.Write(new String(' ', 100));
                             Console.SetCursorPosition(0, this.board.Height + 4);
                             this.attackers[i].Attack(0, this.board.Height + 4, this.player);
                         }
                     }
+                    iteration++;
+                    timeSineLastHit++;
                     this.Render();
                 }
                 // game over message
                 if (this.player.GetHealth() == 0)
                 {
-                    Console.SetCursorPosition(0, this.board.Height + 4);
-                    Console.Write(new String(' ', 100));
-                    Console.SetCursorPosition(0, this.board.Height + 4);
-                    Console.WriteLine("Game Over!");
+                    Screens.EndScreen(this.board.Width / 2, this.board.Height / 2, 10);
                 }
             } while ((key = Console.ReadKey(true).Key) != ConsoleKey.Escape);
         }
