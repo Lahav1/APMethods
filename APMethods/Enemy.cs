@@ -21,10 +21,11 @@ namespace APMethods
             this.speed = newSpeed;
         }
 
-        public void Attack(int xPos, int yPos)
+        public void Attack(int xPos, int yPos, Player player)
         {
             Console.SetCursorPosition(xPos, yPos);
             Console.Write("\n");
+            player.DecreaseHealth(2);
         }
 
         public void SetChasingStrategy(ChasingStrategy strategy)

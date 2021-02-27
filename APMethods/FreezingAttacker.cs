@@ -11,12 +11,13 @@ namespace APMethods
 
         }
 
-        public override void Attack(int xPos, int yPos)
+        public override void Attack(int xPos, int yPos, Player player)
         {
             string message = "Attacking player with ice. ";
             Console.SetCursorPosition(xPos, yPos);
             Console.Write(message);
-            this.decoratedAttacker.Attack(xPos + message.Length, yPos);
+            player.DecreaseHealth(3);
+            this.decoratedAttacker.Attack(xPos + message.Length, yPos, player);
         }
     }
 }

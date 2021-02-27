@@ -13,9 +13,9 @@ namespace APMethods
             this.decoratedAttacker = enemy;
         }
 
-        public virtual void Attack(int xPos, int yPos)
+        public virtual void Attack(int xPos, int yPos, Player player)
         {
-            this.decoratedAttacker.Attack(xPos, yPos);
+            this.decoratedAttacker.Attack(xPos, yPos, player);
         }
     }
 }

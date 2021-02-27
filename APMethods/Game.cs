@@ -101,7 +101,7 @@ namespace APMethods
                             Console.SetCursorPosition(0, this.board.Height + 4);
                             Console.Write(new String(' ', 100));
                             Console.SetCursorPosition(0, this.board.Height + 4);
-                            this.attackers[i].Attack(0, this.board.Height + 4);
+                            this.attackers[i].Attack(0, this.board.Height + 4, this.player);
                         }
                     }
                     this.Render();

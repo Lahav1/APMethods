@@ -84,11 +84,7 @@ namespace APMethods
 
         public bool CheckHit(Enemy enemy)
         {
-            if (this.xPos == enemy.GetX() && this.yPos == enemy.GetY()) {
-                this.DecreaseHealth(10);
-                return true;
-            }
-            return false;
+            return (this.xPos == enemy.GetX() && this.yPos == enemy.GetY());
         }
     }
 }
