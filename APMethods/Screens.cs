@@ -47,6 +47,7 @@ namespace APMethods
             Console.Write("*                           *");
             Console.SetCursorPosition(x, y + 6);
             Console.WriteLine(new String('*', 29));
+            Console.SetCursorPosition(0, 0);
         }
     }
 }

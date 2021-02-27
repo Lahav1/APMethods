@@ -83,7 +83,7 @@ namespace APMethods
             this.Render();
             ConsoleKey key = 0;
             int iteration = 0;
-            int timeSineLastHit = 0;
+            int timeSinceLastHit = 0;
             do
             {
                 this.HandleKeyPress(key);
@@ -93,7 +93,7 @@ namespace APMethods
                     {
                         this.player.IncreaseScore(1);
                     }
-                    if(timeSineLastHit % 120 == 0)
+                    if(timeSinceLastHit % 90 == 0)
                     {
                         Console.SetCursorPosition(0, this.board.Height + 4);
                         Console.Write(new String(' ', 100));
@@ -104,7 +104,7 @@ namespace APMethods
                         bool isHit = this.player.CheckHit(this.enemies[i]);
                         if (isHit)
                         {
-                            timeSineLastHit = 0;
+                            timeSinceLastHit = 0;
                             Console.SetCursorPosition(0, this.board.Height + 4);
                             Console.Write(new String(' ', 100));
                             Console.SetCursorPosition(0, this.board.Height + 4);
@@ -112,7 +112,7 @@ namespace APMethods
                         }
                     }
                     iteration++;
-                    timeSineLastHit++;
+                    timeSinceLastHit++;
                     this.Render();
                 }
                 // game over message
