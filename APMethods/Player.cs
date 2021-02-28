@@ -38,22 +38,6 @@ namespace APMethods
             this.scoreObservers.Remove(o);
         }
 
-        public override void MoveUp(Board board)
-        {
-            if (this.yPos > 1)
-            {
-                this.yPos = this.yPos - 1;
-            }
-        }
-
-        public override void MoveDown(Board board)
-        {
-            if (this.yPos < board.Height)
-            {
-                this.yPos = this.yPos + 1;
-            }
-        }
-
         public void IncreaseScore(int points)
         {
             this.Score += points;

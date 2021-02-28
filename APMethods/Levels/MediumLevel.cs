@@ -4,12 +4,12 @@ using System.Text;
 
 namespace APMethods.Levels
 {
-    class EasyLevel : Level
+    class MediumLevel : Level
     {
         Random rnd;
         List<Obstacle> obstacles;
 
-        public EasyLevel(Board board)
+        public MediumLevel(Board board)
         {
             this.rnd = new Random();
             this.obstacles = new List<Obstacle>();
@@ -20,12 +20,12 @@ namespace APMethods.Levels
         {
             int width = board.Width;
             int height = board.Height;
-            for (int i = 0; i < ((width * height) / 150); i++)
+            for (int i = 0; i < ((width * height) / 90); i++)
             {
                 int px = this.rnd.Next(1, width - 1);
                 int py = this.rnd.Next(1, height - 1);
                 this.obstacles.Add(new Obstacle(px, py));
-            } 
+            }
         }
 
         public List<Obstacle> GetObstacles()

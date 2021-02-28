@@ -25,6 +25,18 @@ namespace APMethods
             Thread.Sleep(800);
         }
 
+        public static int SelectDifficulty()
+        {
+            Console.WriteLine("Select difficulty level");
+            Console.WriteLine("1: Easy");
+            Console.WriteLine("2: Medium");
+            Console.WriteLine("3: Hard");
+            string choice = Console.ReadLine();
+            Console.SetCursorPosition(0, 0);
+            Console.WriteLine(new String(' ', 50));
+            return int.Parse(choice);
+        }
+
         public static void EndScreen(int x, int y, int score)
         {
             x -= 14;

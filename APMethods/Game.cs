@@ -17,14 +17,15 @@ namespace APMethods
         ScoreIndicator scoreIndicator;
         HealthIndicator healthIndicator;
 
-        public Game(Board board)
+        public Game(Board board, int difficulty)
         {
             this.board = board;
             this.elements = new List<Drawable>();
             this.enemies = new List<Enemy>();
             this.attackers = new List<Attacker>();
 
-            Level lvl = new EasyLevel(this.board);
+            LevelFactory factory = new LevelFactory(this.board);
+            Level lvl = factory.GetLevel(difficulty);
             this.obstacles = lvl.GetObstacles();
             this.elements.AddRange(this.obstacles);
             
