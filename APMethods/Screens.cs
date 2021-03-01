@@ -25,16 +25,51 @@ namespace APMethods
             Thread.Sleep(800);
         }
 
-        public static int SelectDifficulty()
+        public static int SelectDifficulty(int x, int y)
         {
-            Console.WriteLine("Select difficulty level");
-            Console.WriteLine("1: Easy");
-            Console.WriteLine("2: Medium");
-            Console.WriteLine("3: Hard");
-            string choice = Console.ReadLine();
+            x -= 14;
+            y -= 2;
+            x = Math.Max(0, x);
+            y = Math.Max(0, y);
+            Console.SetCursorPosition(x, y);
+            Console.Write(new String('*', 45));
+            Console.SetCursorPosition(x, y + 1);
+            Console.Write("*");
+            Console.Write(new string(' ', 43));
+            Console.Write("*");
+            Console.SetCursorPosition(x, y + 2);
+            Console.Write("*         Please choose difficulty          *");
+            Console.SetCursorPosition(x, y + 3);
+            Console.Write("*");
+            Console.Write(new string(' ', 43));
+            Console.Write("*"); Console.SetCursorPosition(x, y + 4);
+            Console.Write($"*      1 - Easy, 2 - Medium, 3 - Hard       *");
+            Console.SetCursorPosition(x, y + 5);
+            Console.Write("*");
+            Console.Write(new string(' ', 43));
+            Console.Write("*");
+            Console.SetCursorPosition(x, y + 6);
+            Console.Write("*");
+            Console.Write(new string(' ', 43));
+            Console.Write("*");
+            Console.SetCursorPosition(x, y + 7);
+            Console.Write("*");
+            Console.Write(new string(' ', 43));
+            Console.Write("*");
+            Console.SetCursorPosition(x, y + 8);
+            Console.WriteLine(new String('*', 45));
+            Console.SetCursorPosition(x + 22, y + 6);
+            int difficulty = int.Parse(Console.ReadLine());
+            while (difficulty != 1 && difficulty != 2 && difficulty != 3)
+            {
+                Console.SetCursorPosition(x + 22, y + 6);
+                Console.Write(new string(' ', 5));
+                Console.SetCursorPosition(x + 22, y + 6);
+                difficulty = int.Parse(Console.ReadLine());
+            }
+            Console.Clear();
             Console.SetCursorPosition(0, 0);
-            Console.WriteLine(new String(' ', 50));
-            return int.Parse(choice);
+            return difficulty;
         }
 
         public static void EndScreen(int x, int y, int score)
