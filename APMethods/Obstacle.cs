@@ -8,16 +8,18 @@ namespace APMethods
     {
         int xPos;
         int yPos;
+        char symbol;
 
         public Obstacle(int x, int y)
         {
             this.xPos = x;
             this.yPos = y;
+            this.symbol = '#';
         }
 
         public void DrawOn(Board board)
         {
-            board.DrawCell(this.xPos, this.yPos, '#');
+            board.Emplace(this.xPos, this.yPos, this.symbol);
         }
 
         public int GetX()

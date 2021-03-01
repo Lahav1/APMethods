@@ -94,7 +94,7 @@ namespace APMethods
             do
             {
                 this.HandleKeyPress(key);
-                while (!Console.KeyAvailable && this.player.GetHealth() != 0)
+                while (!Console.KeyAvailable && this.player.Health != 0)
                 {
                     if (iteration % 30 == 0)
                     {
@@ -123,7 +123,7 @@ namespace APMethods
                     this.Render();
                 }
                 // game over message
-                if (this.player.GetHealth() == 0)
+                if (this.player.Health == 0)
                 {
                     Console.SetCursorPosition(0, 0);
                     Console.Write(new String(' ', 100));

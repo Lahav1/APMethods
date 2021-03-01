@@ -7,13 +7,15 @@ namespace APMethods
     class Player : Character, HealthObservable, ScoreObservable
     {
         public int Score { get; set; }
+        public int Health { get; set; }
         List<Observer> healthObservers;
         List<Observer> scoreObservers;
 
         public Player(int x, int y, List<Obstacle> obstacles) : base(x, y, obstacles)
         {
-            this.Score = 0;
             this.symbol = 'P';
+            this.Score = 0;
+            this.Health = 100;
             this.healthObservers = new List<Observer>();
             this.scoreObservers = new List<Observer>();
         }
@@ -46,12 +48,12 @@ namespace APMethods
 
         public void DecreaseHealth(int healthPoints)
         {
-            this.health -= healthPoints;
-            if (this.health < 0)
+            this.Health -= healthPoints;
+            if (this.Health < 0)
             {
-                this.health = 0;
+                this.Health = 0;
             }
-            this.NotifyHealth(this.health);
+            this.NotifyHealth(this.Health);
         }
 
         public void NotifyHealth(int payload)

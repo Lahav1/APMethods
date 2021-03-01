@@ -13,7 +13,7 @@ namespace APMethods
            this.rnd = new Random();
         }
 
-        public void ChasingAlgorithm(Enemy enemy, Board board, Player player)
+        public void Chase(Enemy enemy, Board board, Player player)
         {
             String[] direction = { "Up", "Down", "Right", "Left" };
             int i = this.rnd.Next(4);

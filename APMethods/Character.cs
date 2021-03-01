@@ -9,12 +9,10 @@ namespace APMethods
         protected int xPos;
         protected int yPos;
         protected char symbol;
-        protected int health;
         private List<Obstacle> obstacles;
 
         public Character(int x, int y, List<Obstacle> obstacles)
         {
-            this.health = 100;
             this.xPos = x;
             this.yPos = y;
             this.obstacles = obstacles;
@@ -22,7 +20,7 @@ namespace APMethods
 
         public void DrawOn(Board board)
         {
-            board.DrawCell(this.xPos, this.yPos, this.symbol);
+            board.Emplace(this.xPos, this.yPos, this.symbol);
         }
 
         public virtual void MoveUp(Board board)
@@ -67,10 +65,6 @@ namespace APMethods
             return this.yPos;
         }
 
-        public int GetHealth()
-        {
-            return this.health;
-        }
 
         public bool DoesObstacleExist(int x, int y)
         {

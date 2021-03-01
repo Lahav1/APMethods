@@ -6,20 +6,14 @@ namespace APMethods
 {
     class Enemy : Character, Attacker, Observer
     {
-        int speed;
         ChasingStrategy strategy;
 
         public Enemy(int x, int y, Player player, List<Obstacle> obstacles) : base(x, y, obstacles)
         {
-            this.speed = 1;
             this.symbol = 'E';
             player.SubscribeToScore(this);
         }
 
-        public void SetSpeed(int newSpeed)
-        {
-            this.speed = newSpeed;
-        }
 
         public void Attack(int xPos, int yPos, Player player)
         {
@@ -35,7 +29,7 @@ namespace APMethods
 
         public void Move(Board board, Player player)
         {
-            this.strategy.ChasingAlgorithm(this, board, player);
+            this.strategy.Chase(this, board, player);
         }
 
         public void Update(int payload)

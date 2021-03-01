@@ -51,7 +51,7 @@ namespace APMethods
             return g;
         }
 
-        public void DrawCell(int x, int y, char symbol)
+        public void Emplace(int x, int y, char symbol)
         {
             this.grid[y, x] = symbol;
         }

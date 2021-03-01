@@ -13,7 +13,7 @@ namespace APMethods
             this.rnd = new Random();
         }
 
-        public void ChasingAlgorithm(Enemy enemy, Board board, Player player)
+        public void Chase(Enemy enemy, Board board, Player player)
         {
             Random r = new Random();
             double heading = 0;
