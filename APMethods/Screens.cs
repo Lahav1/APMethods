@@ -106,13 +106,13 @@ namespace APMethods
             foreach(char c in ending1)
             {
                 Console.Write(c);
-                Thread.Sleep(80);
+                Thread.Sleep(70);
             }
-            Thread.Sleep(1600);
+            Thread.Sleep(1500);
             foreach (char c in ending2)
             {
                 Console.Write(c);
-                Thread.Sleep(70);
+                Thread.Sleep(60);
             }
             Thread.Sleep(1200);
         }

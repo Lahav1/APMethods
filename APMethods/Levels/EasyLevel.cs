@@ -39,22 +39,10 @@ namespace APMethods.Levels
                     y = this.rnd.Next(1, height - 1);
                 } while (this.obstacles.Any(e => e.GetY() == y));
 
-                int iter = i % 3;
                 Enemy e = new Enemy(x, y, player, this.obstacles);
                 e.SetChasingStrategy(new BasicChaser());
                 this.enemies.Add(e);
-                switch (iter)
-                {
-                    case 0:
-                        this.Attackers.Add(new FlamingAttacker(e));
-                        break;
-                    case 1:
-                        this.Attackers.Add(new FreezingAttacker(e));
-                        break;
-                    case 2:
-                        this.Attackers.Add(new FlamingAttacker(new FlamingAttacker(e)));
-                        break;
-                }
+                this.Attackers.Add(e);
             }
         }
 
