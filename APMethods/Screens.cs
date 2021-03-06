@@ -112,9 +112,17 @@ namespace APMethods
             foreach (char c in ending2)
             {
                 Console.Write(c);
-                Thread.Sleep(60);
+                Thread.Sleep(55);
             }
-            Thread.Sleep(1200);
+            Thread.Sleep(1000);
+
+            Console.Write("\n\n");
+            foreach(string s in Properties.Resources.endingScreenString.Split('\n'))
+            {
+                Console.WriteLine(s);
+                Thread.Sleep(5);
+            }
+            Thread.Sleep(1000);
         }
     }
 }

@@ -61,6 +61,27 @@ namespace APMethods.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to                               `odNMNdo` 
+        ///                             -NMMMMMMMN-
+        ///       -:                    oMMMMMMMMMs
+        ///       dM:                   -NMMMMMMMm.
+        ///       /Md                    `odNNNh+` 
+        ///        mM/                    .+yhys/` 
+        ///        /Mm                   oNMMMMMMm/
+        ///         mM/                 -MMMMMMMMMN
+        ///   .yyy. /Mm////////////:    /MMMMMMMMMM
+        ///   -MMM.  syyyyyyyyyyyyy+    /MMMMMMMMMM
+        ///+++sMMMo+++++++++++++++++++: /MMMMMMMMMM
+        ///NMMMMMMMMMMMMMMMMMMMMMMMMMMy /MMMMMMMMMM
+        ///---/MMM/ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string endingScreenString {
+            get {
+                return ResourceManager.GetString("endingScreenString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to y/-                                                                                              
         ///                       `//::-                                                                                           
         ///             ``          `/o//:-                                                                                        

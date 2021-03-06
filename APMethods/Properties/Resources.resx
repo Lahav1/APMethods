@@ -117,6 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="endingScreenString" xml:space="preserve">
+    <value>                              `odNMNdo` 
+                             -NMMMMMMMN-
+       -:                    oMMMMMMMMMs
+       dM:                   -NMMMMMMMm.
+       /Md                    `odNNNh+` 
+        mM/                    .+yhys/` 
+        /Mm                   oNMMMMMMm/
+         mM/                 -MMMMMMMMMN
+   .yyy. /Mm////////////:    /MMMMMMMMMM
+   -MMM.  syyyyyyyyyyyyy+    /MMMMMMMMMM
++++sMMMo+++++++++++++++++++: /MMMMMMMMMM
+NMMMMMMMMMMMMMMMMMMMMMMMMMMy /MMMMMMMMMM
+---/MMM/-------------------. /MMMMMMMMMM
+   -MMM.             `-+osssshMMMMMMMMMM
+   -MMM.            :dNMMMMMMMMMMMMMMMMN
+   -MMM.           `NMMMMMMMMMMMMMMMMMN+
+   -MMM.           -MMMMMMMNNNmmmmmmds- 
+   -MMM.           :MMMMMMM:`````````   
+   -MMM.           :MMMMMMM.            
+   -MMM.           :MMMMMMM`            
+   -MMM.           :MMMMMMM`            
+   -MMM.           :MMMMMMM`            
+   -MMM.           .MMMMMMN             
+   .mmm.            :hNMNy-</value>
+  </data>
   <data name="OpenScreenString" xml:space="preserve">
     <value>y/-                                                                                              
                        `//::-                                                                                           
