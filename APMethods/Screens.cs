@@ -96,5 +96,25 @@ namespace APMethods
             Console.WriteLine(new String('*', 29));
             Console.SetCursorPosition(0, 0);
         }
+
+        public static void Finish()
+        {
+            Console.Clear();
+            string ending1 = "You lost...";
+            string ending2 = "\nNow you have to finish all your homeworks...";
+            Thread.Sleep(500);
+            foreach(char c in ending1)
+            {
+                Console.Write(c);
+                Thread.Sleep(80);
+            }
+            Thread.Sleep(1600);
+            foreach (char c in ending2)
+            {
+                Console.Write(c);
+                Thread.Sleep(70);
+            }
+            Thread.Sleep(1200);
+        }
     }
 }

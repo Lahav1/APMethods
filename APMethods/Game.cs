@@ -16,43 +16,25 @@ namespace APMethods
         List<Obstacle> obstacles;
         ScoreIndicator scoreIndicator;
         HealthIndicator healthIndicator;
+        bool moveFlag;
 
         public Game(Board board, int difficulty)
         {
+            this.moveFlag = true;
             this.board = board;
             this.elements = new List<Drawable>();
-            this.enemies = new List<Enemy>();
-            this.attackers = new List<Attacker>();
+            this.player = new Player(8, 19, this.obstacles);
 
-            LevelFactory factory = new LevelFactory(this.board);
+            LevelFactory factory = new LevelFactory(this.board, this.player);
             Level lvl = factory.GetLevel(difficulty);
             this.obstacles = lvl.GetObstacles();
+            this.enemies = lvl.GetEnemies();
+            this.attackers = lvl.GetAttackers();
+            this.elements.AddRange(this.enemies);
             this.elements.AddRange(this.obstacles);
-            
-            this.player = new Player(8, 19, this.obstacles);
             this.elements.Add(this.player);
-
-            Enemy e1 = new Enemy(9, 14, this.player, this.obstacles);
-            e1.SetChasingStrategy(new BasicChaser());
-            this.elements.Add(e1);
-            this.enemies.Add(e1);
-            Attacker a1 = new FlamingAttacker(e1);
-            this.attackers.Add(a1);
-
-            Enemy e2 = new Enemy(5, 7, this.player, this.obstacles);
-            e2.SetChasingStrategy(new BasicChaser());
-            this.elements.Add(e2);
-            this.enemies.Add(e2);
-            Attacker a2 = new FreezingAttacker(e2);
-            this.attackers.Add(a2);
-
-            Enemy e3 = new Enemy(2, 3, this.player, this.obstacles);
-            e3.SetChasingStrategy(new BasicChaser());
-            this.elements.Add(e3);
-            this.enemies.Add(e3);
-            Attacker a3 = new FlamingAttacker(new FreezingAttacker(e3));
-            this.attackers.Add(a3);
-
+            this.player.SetObstacles(this.obstacles);
+            
             this.scoreIndicator = new ScoreIndicator(10, 0, this.player);
             this.healthIndicator = new HealthIndicator(30, 0, this.player);
         }
@@ -105,19 +87,23 @@ namespace APMethods
                         Console.SetCursorPosition(0, this.board.Height + 4);
                         Console.Write(new String(' ', 100));
                     }
-                    for (int i = 0; i < this.enemies.Count; i++)
+                    if(moveFlag = !moveFlag)
                     {
-                        this.enemies[i].Move(this.board, this.player);
-                        bool isHit = this.player.CheckHit(this.enemies[i]);
-                        if (isHit)
+                        for (int i = 0; i < this.enemies.Count; i++)
                         {
-                            timeSinceLastHit = 0;
-                            Console.SetCursorPosition(0, this.board.Height + 4);
-                            Console.Write(new String(' ', 100));
-                            Console.SetCursorPosition(0, this.board.Height + 4);
-                            this.attackers[i].Attack(0, this.board.Height + 4, this.player);
+                            this.enemies[i].Move(this.board, this.player);
+                            bool isHit = this.player.CheckHit(this.enemies[i]);
+                            if (isHit)
+                            {
+                                timeSinceLastHit = 0;
+                                Console.SetCursorPosition(0, this.board.Height + 4);
+                                Console.Write(new String(' ', 100));
+                                Console.SetCursorPosition(0, this.board.Height + 4);
+                                this.attackers[i].Attack(0, this.board.Height + 4, this.player);
+                            }
                         }
                     }
+
                     iteration++;
                     timeSinceLastHit++;
                     this.Render();

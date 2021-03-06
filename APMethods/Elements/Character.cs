@@ -77,5 +77,10 @@ namespace APMethods
             }
             return false;
         }
+
+        public void SetObstacles(List<Obstacle> o)
+        {
+            this.obstacles = o;
+        }
     }
 }

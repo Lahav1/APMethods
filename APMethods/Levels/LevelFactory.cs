@@ -7,10 +7,12 @@ namespace APMethods.Levels
     class LevelFactory
     {
         private Board board;
+        private Player player;
 
-        public LevelFactory(Board board)
+        public LevelFactory(Board board, Player player)
         {
             this.board = board;
+            this.player = player;
         }
 
         public Level GetLevel(int difficulty)
@@ -18,13 +20,13 @@ namespace APMethods.Levels
             switch (difficulty)
             {
                 case 1:
-                    return new EasyLevel(board);
+                    return new EasyLevel(board, player);
                 case 2:
-                    return new MediumLevel(board);
+                    return new MediumLevel(board, player);
                 case 3:
-                    return new HardLevel(board);
+                    return new HardLevel(board, player);
                 default:
-                    return new EasyLevel(board);
+                    return new EasyLevel(board, player);
             }
         }
     }
