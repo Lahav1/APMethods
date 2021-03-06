@@ -61,7 +61,7 @@ namespace APMethods.Levels
                         this.Attackers.Add(new FreezingAttacker(e));
                         break;
                     case 2:
-                        this.Attackers.Add(new FlamingAttacker(new FlamingAttacker(e)));
+                        this.Attackers.Add(new FlamingAttacker(new FreezingAttacker(e)));
                         break;
                 }
             }

@@ -33,7 +33,6 @@ namespace APMethods.Levels
                 int py = this.rnd.Next(1, height - 1);
                 this.obstacles.Add(new Obstacle(px, py));
             }
-
             // Generate enemies
             for (int i = 0; i < Math.Max(3, width * height / 300); i++)
             {
