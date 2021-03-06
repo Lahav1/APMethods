@@ -1,4 +1,5 @@
-﻿using System;
+﻿using APMethods.GameBoard;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,8 +23,8 @@ namespace APMethods.Levels
 
         public void GenerateLevel(Board board, Player player)
         {
-            int width = board.Width;
-            int height = board.Height;
+            int width = board.GetWidth();
+            int height = board.GetHeight();
             // Generate obstacles
             for (int i = 0; i < ((width * height) / 40); i++)
             {

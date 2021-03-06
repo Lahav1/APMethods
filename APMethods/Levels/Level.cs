@@ -1,6 +1,5 @@
-﻿using System;
+﻿using APMethods.GameBoard;
 using System.Collections.Generic;
-using System.Text;
 
 namespace APMethods.Levels
 {

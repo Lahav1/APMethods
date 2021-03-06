@@ -1,4 +1,5 @@
-﻿using System;
+﻿using APMethods.GameBoard;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -33,7 +34,7 @@ namespace APMethods
 
         public virtual void MoveDown(Board board)
         {
-            if (this.yPos < board.Height && !this.DoesObstacleExist(this.xPos, this.yPos + 1))
+            if (this.yPos < board.GetHeight() && !this.DoesObstacleExist(this.xPos, this.yPos + 1))
             {
                 this.yPos = this.yPos + 1;
             }
@@ -49,7 +50,7 @@ namespace APMethods
 
         public void MoveRight(Board board)
         {
-            if (this.xPos < board.Width && !this.DoesObstacleExist(this.xPos + 1, this.yPos))
+            if (this.xPos < board.GetWidth() && !this.DoesObstacleExist(this.xPos + 1, this.yPos))
             {
                 this.xPos = this.xPos + 1;
             }

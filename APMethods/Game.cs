@@ -1,8 +1,7 @@
-﻿using APMethods.Levels;
+﻿using APMethods.GameBoard;
+using APMethods.Levels;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 
 namespace APMethods
 {
@@ -84,7 +83,7 @@ namespace APMethods
                     }
                     if(timeSinceLastHit % 90 == 0)
                     {
-                        Console.SetCursorPosition(0, this.board.Height + 4);
+                        Console.SetCursorPosition(0, this.board.GetHeight() + 4);
                         Console.Write(new String(' ', 100));
                     }
                     if(moveFlag = !moveFlag)
@@ -96,10 +95,10 @@ namespace APMethods
                             if (isHit)
                             {
                                 timeSinceLastHit = 0;
-                                Console.SetCursorPosition(0, this.board.Height + 4);
+                                Console.SetCursorPosition(0, this.board.GetHeight() + 4);
                                 Console.Write(new String(' ', 100));
-                                Console.SetCursorPosition(0, this.board.Height + 4);
-                                this.attackers[i].Attack(0, this.board.Height + 4, this.player);
+                                Console.SetCursorPosition(0, this.board.GetHeight() + 4);
+                                this.attackers[i].Attack(0, this.board.GetHeight() + 4, this.player);
                             }
                         }
                     }
@@ -113,9 +112,9 @@ namespace APMethods
                 {
                     Console.SetCursorPosition(0, 0);
                     Console.Write(new String(' ', 100));
-                    Console.SetCursorPosition(0, this.board.Height + 4);
+                    Console.SetCursorPosition(0, this.board.GetHeight() + 4);
                     Console.Write(new String(' ', 100));
-                    Screens.EndScreen(this.board.Width / 2, this.board.Height / 2, this.player.Score);
+                    Screens.EndScreen(this.board.GetWidth() / 2, this.board.GetHeight() / 2, this.player.Score);
                 }
             } while ((key = Console.ReadKey(true).Key) != ConsoleKey.Escape);
         }

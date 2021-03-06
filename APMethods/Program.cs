@@ -8,7 +8,7 @@ namespace APMethods
         {
             Screens.OpenScreen();
             int difficulty = Screens.SelectDifficulty(25, 10);
-            Board board = new Board(20, 50);
+            ConsoleBoard board = new ConsoleBoard(20, 50);
             Game game = new Game(board, difficulty);
             game.Run();
             Screens.Finish();

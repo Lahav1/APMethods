@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using APMethods.GameBoard;
+using System;
 
 namespace APMethods
 {
@@ -16,7 +15,7 @@ namespace APMethods
         public void Chase(Enemy enemy, Board board, Player player)
         {
             Random r = new Random();
-            double heading = 0;
+            double heading;
             if (r.Next(8) < 2)
             {
                 heading = r.Next(360);

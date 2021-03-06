@@ -1,26 +1,25 @@
-﻿using System;
+﻿using APMethods.GameBoard;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Drawing.Drawing2D;
 
 namespace APMethods
 {
-    class Board
+    class ConsoleBoard : Board
     {
         char[,] grid;
         List<Drawable> elements;
-        public int Width { get; }
-        public int Height { get; }
+        int width;
+        int height;
 
-        public Board(int height, int width)
+        public ConsoleBoard(int height, int width)
         {
-            this.Width = width;
-            this.Height = height;
+            this.width = width;
+            this.height = height;
             this.grid = this.InitGrid(width, height);
             this.elements = new List<Drawable>();
         }
 
-        private char[,] InitGrid(int width, int height)
+        public char[,] InitGrid(int width, int height)
         {
             // initialize the grid frame
             char[,] g = new char[height + 2, width + 2];
@@ -59,7 +58,7 @@ namespace APMethods
         public void Draw(List<Drawable> elements)
         {
             Console.SetCursorPosition(0, 1);
-            this.grid = this.InitGrid(this.Width, this.Height);
+            this.grid = this.InitGrid(this.width, this.height);
             foreach (var element in elements)
             {
                 element.DrawOn(this);
@@ -74,6 +73,16 @@ namespace APMethods
                 }
                 Console.Write(Environment.NewLine);
             }
+        }
+
+        public int GetHeight()
+        {
+            return this.height;
+        }
+
+        public int GetWidth()
+        {
+            return this.width;
         }
     }
 }
