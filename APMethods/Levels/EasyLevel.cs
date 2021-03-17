@@ -40,7 +40,7 @@ namespace APMethods.Levels
                     y = this.rnd.Next(1, height - 1);
                 } while (this.obstacles.Any(e => e.GetY() == y));
 
-                Enemy e = new Enemy(x, y, player, this.obstacles);
+                Enemy e = new Enemy(x, y, player, this.obstacles, new Dictionary<int, ChasingStrategy>());
                 e.SetChasingStrategy(new BasicChaser());
                 this.enemies.Add(e);
                 this.Attackers.Add(e);

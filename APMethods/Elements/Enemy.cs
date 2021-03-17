@@ -7,11 +7,13 @@ namespace APMethods
     class Enemy : Character, Attacker, Observer
     {
         ChasingStrategy strategy;
+        Dictionary<int, ChasingStrategy> strategies;
 
-        public Enemy(int x, int y, Player player, List<Obstacle> obstacles) : base(x, y, obstacles)
+        public Enemy(int x, int y, Player player, List<Obstacle> obstacles, Dictionary<int, ChasingStrategy> strategies) : base(x, y, obstacles)
         {
             this.symbol = 'E';
             player.SubscribeToScore(this);
+            this.strategies = strategies;
         }
 
 
@@ -35,10 +37,11 @@ namespace APMethods
 
         public void Update(int payload)
         {
-            if (payload == 10)
+            if (this.strategies.ContainsKey(payload))
             {
-                this.SetChasingStrategy(new AdvancedChaser());
+                this.SetChasingStrategy(this.strategies[payload]);
             }
+
         }
     }
 }

@@ -49,7 +49,9 @@ namespace APMethods.Levels
                 } while (this.obstacles.Any(e => e.GetY() == y));
 
                 int iter = i % 3;
-                Enemy e = new Enemy(x, y, player, this.obstacles);
+                Dictionary<int, ChasingStrategy> strategies = new Dictionary<int, ChasingStrategy>();
+                strategies[10] = new AdvancedChaser();
+                Enemy e = new Enemy(x, y, player, this.obstacles, strategies);
                 e.SetChasingStrategy(new BasicChaser());
                 this.enemies.Add(e);
                 switch (iter)
