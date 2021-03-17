@@ -9,6 +9,7 @@ namespace APMethods
 
         }
 
+        // Attacks player with flame.
         public override void Attack(int xPos, int yPos, Player player)
         {
             string text = "Attacking player with flame. ";

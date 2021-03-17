@@ -13,6 +13,7 @@ namespace APMethods
             this.decoratedAttacker = enemy;
         }
 
+        // Call the decorated attacker's attack function.
         public virtual void Attack(int xPos, int yPos, Player player)
         {
             this.decoratedAttacker.Attack(xPos, yPos, player);

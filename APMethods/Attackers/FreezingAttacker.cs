@@ -9,6 +9,7 @@ namespace APMethods
 
         }
 
+        // Attacks player with ice.
         public override void Attack(int xPos, int yPos, Player player)
         {
             string text = "Attacking player with ice. ";

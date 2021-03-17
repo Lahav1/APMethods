@@ -12,6 +12,7 @@ namespace APMethods
             this.rnd = new Random();
         }
 
+        // Calculate route to player and take a step towards him.
         public void Chase(Enemy enemy, Board board, Player player)
         {
             Random r = new Random();
