@@ -10,6 +10,7 @@ namespace APMethods.Message
         int y;
         string text;
 
+        // Constructs a message that appears on console.
         public ConsoleMessage(int x, int y, string text)
         {
             this.x = x;

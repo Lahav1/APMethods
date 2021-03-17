@@ -38,6 +38,7 @@ namespace APMethods
             this.healthIndicator = new HealthIndicator(30, 0, this.player);
         }
 
+        // Listens to player's keyboard inputs and moves player accordingly.
         public void HandleKeyPress(ConsoleKey key)
         {
             if (key == ConsoleKey.UpArrow)
@@ -58,6 +59,7 @@ namespace APMethods
             }
         }
 
+        // Renders all UI elements to screen.
         public void Render()
         {
             this.board.Draw(this.elements);
@@ -65,6 +67,7 @@ namespace APMethods
             this.healthIndicator.Display();
         }
 
+        // Runs the game loop.
         public void Run()
         {
             Console.CursorVisible = false;
@@ -107,7 +110,7 @@ namespace APMethods
                     timeSinceLastHit++;
                     this.Render();
                 }
-                // game over message
+                // Game over message
                 if (this.player.Health == 0)
                 {
                     Console.SetCursorPosition(0, 0);
