@@ -8,6 +8,7 @@ namespace APMethods
     {
         public ScoreIndicator(int x, int y, ScoreObservable player) : base(0, x, y, "Score")
         {
+            // subscribe to player's score parameter.
             player.SubscribeToScore(this);
         }
 

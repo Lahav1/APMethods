@@ -12,6 +12,7 @@ namespace APMethods
            this.rnd = new Random();
         }
 
+        // Take a random step up/down/left/right.
         public void Chase(Enemy enemy, Board board, Player player)
         {
             String[] direction = { "Up", "Down", "Right", "Left" };

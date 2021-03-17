@@ -8,6 +8,7 @@ namespace APMethods
     {
         public HealthIndicator(int x, int y, HealthObservable player) : base(100, x, y, "Health")
         {
+            // subscribe to player's health parameter.
             player.SubscribeToHealth(this);
         }
 

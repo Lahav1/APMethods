@@ -18,7 +18,8 @@ namespace APMethods
             this.yPos = y;
             this.title = title;
         }
-
+        
+        // Display indicator on screen.
         public void Display()
         {
             Console.SetCursorPosition(this.xPos + this.title.Length + 1, 0);

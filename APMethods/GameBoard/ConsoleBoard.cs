@@ -19,6 +19,7 @@ namespace APMethods
             this.elements = new List<Drawable>();
         }
 
+        // Initialize the grid's frame.
         public char[,] InitGrid(int width, int height)
         {
             // initialize the grid frame
@@ -50,11 +51,13 @@ namespace APMethods
             return g;
         }
 
+        // Emplace an element on the board.
         public void Emplace(int x, int y, char symbol)
         {
             this.grid[y, x] = symbol;
         }
 
+        // Draw board on console.
         public void Draw(List<Drawable> elements)
         {
             Console.SetCursorPosition(0, 1);
@@ -75,11 +78,13 @@ namespace APMethods
             }
         }
 
+        // Return the board's height.
         public int GetHeight()
         {
             return this.height;
         }
 
+        // Return the board's width.
         public int GetWidth()
         {
             return this.width;
