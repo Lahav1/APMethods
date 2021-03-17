@@ -101,7 +101,7 @@ namespace APMethods
         {
             Console.Clear();
             string ending1 = "You lost...";
-            string ending2 = "\nNow you have to finish all your homeworks...";
+            string ending2 = "\nNow you have to stay up all night and finish your homeworks...";
             Thread.Sleep(500);
             foreach(char c in ending1)
             {

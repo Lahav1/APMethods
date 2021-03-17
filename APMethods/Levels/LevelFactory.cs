@@ -16,6 +16,7 @@ namespace APMethods.Levels
             this.player = player;
         }
 
+        // Choose a level to create.
         public Level GetLevel(int difficulty)
         {
             switch (difficulty)

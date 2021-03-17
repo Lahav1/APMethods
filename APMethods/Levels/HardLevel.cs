@@ -12,6 +12,7 @@ namespace APMethods.Levels
         List<Enemy> enemies;
         List<Attacker> Attackers;
 
+        // Hard level constructor.
         public HardLevel(Board board, Player player)
         {
             this.rnd = new Random();
@@ -21,6 +22,7 @@ namespace APMethods.Levels
             this.GenerateLevel(board, player);
         }
 
+        // Generates a hard level.
         public void GenerateLevel(Board board, Player player)
         {
             int width = board.GetWidth();
@@ -38,6 +40,7 @@ namespace APMethods.Levels
             {
                 int x = 0;
                 int y = 0;
+                // Generate their location.
                 do
                 {
                     x = this.rnd.Next(1, width - 1);
@@ -49,6 +52,7 @@ namespace APMethods.Levels
                 } while (this.obstacles.Any(e => e.GetY() == y));
 
                 int iter = i % 3;
+                // Set their strategy.
                 Dictionary<int, ChasingStrategy> strategies = new Dictionary<int, ChasingStrategy>();
                 strategies[10] = new AdvancedChaser();
                 Enemy e = new Enemy(x, y, player, this.obstacles, strategies);
@@ -69,16 +73,19 @@ namespace APMethods.Levels
             }
         }
 
+        // Returns the level obstacles.
         public List<Obstacle> GetObstacles()
         {
             return this.obstacles;
         }
 
+        // Returns the level enemies.
         public List<Enemy> GetEnemies()
         {
             return this.enemies;
         }
 
+        // Returns the level attackers.
         public List<Attacker> GetAttackers()
         {
             return this.Attackers;
