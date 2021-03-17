@@ -1,7 +1,6 @@
 ﻿using APMethods.GameBoard;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using APMethods.Message;
 
 namespace APMethods
 {
@@ -18,8 +17,9 @@ namespace APMethods
 
         public void Attack(int xPos, int yPos, Player player)
         {
-            Console.SetCursorPosition(xPos, yPos);
-            Console.Write("\n");
+            string text = "\n";
+            ConsoleMessage msg = new ConsoleMessage(xPos, yPos, text);
+            msg.Display();
             player.DecreaseHealth(2);
         }
 

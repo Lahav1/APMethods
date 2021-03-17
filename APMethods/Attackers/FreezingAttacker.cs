@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using APMethods.Message;
 
 namespace APMethods
 {
@@ -13,11 +11,11 @@ namespace APMethods
 
         public override void Attack(int xPos, int yPos, Player player)
         {
-            string message = "Attacking player with ice. ";
-            Console.SetCursorPosition(xPos, yPos);
-            Console.Write(message);
+            string text = "Attacking player with ice. ";
+            ConsoleMessage msg = new ConsoleMessage(xPos, yPos, text);
+            msg.Display();
             player.DecreaseHealth(3);
-            this.decoratedAttacker.Attack(xPos + message.Length, yPos, player);
+            this.decoratedAttacker.Attack(xPos + text.Length, yPos, player);
         }
     }
 }
